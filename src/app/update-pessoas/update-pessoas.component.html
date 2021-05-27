@@ -1,0 +1,62 @@
+<p-toast position="top-center" key="exibir"></p-toast>
+<p-toast position="center" key="confirmar" (onClose)= "onReject()" [baseZIndex]= "5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button id="button-message" type="button" pButton (click)= "onConfirm()"
+                        label="Sim" class="p-button-success" icon="pi pi-check" iconPos="left"></button>
+                </div>
+                <div class="p-col-6">
+                    <button id="button-message" type="button" pButton (click)= "onReject()"
+                        label="Cancelar" class="p-button-danger" icon="pi pi-times" iconPos="left"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+<div class="p-panel">
+    <p-panel header="Atualizar Pessoa">
+        <div class="container">
+            <form (ngSubmit)= "onSubmit()" [formGroup]= "formulario">
+                <div class="card">
+                    <div class="p-fluid p-grid">
+                        <div class="p-col-12 p-md-6 p-lg-3">
+                            <label for="nome"> Nome </label>
+                            <input class="p-input-text-sm" pInputText formControlName="nome"
+                                placeholder="Digite o nome" minlength="4" maxlength="20">
+                            <span *ngIf= "nome">O nome deve conter o mínimo de 4 letras</span>
+                        </div>
+                        <div class="p-col-12 p-md-6 p-lg-3">
+                            <label for="sobrenome"> Sobrenome </label>
+                            <input class="p-input-text-sm" pInputText formControlName="sobrenome"
+                                placeholder="Digite o sobrenome" minlength="4" maxlength="20">
+                            <span *ngIf= "sobrenome">O sobrenome deve conter o mínimo de 4 letras</span>
+                        </div>
+                        <div class="p-col-12 p-md-6 p-lg-3">
+                            <label for="email"> Email </label>
+                            <input class="p-input-text-sm" type="email" pInputText formControlName="email"
+                                placeholder="Digite o Email" minlength="10" maxlength="50">
+                            <span *ngIf= "email">Formato de Email inválido</span>
+                        </div>
+                        <div class="p-col-12 p-md-6 p-lg-3">
+                            <label for="Cidade"> Cidade </label>
+                            <p-dropdown formControlName="cidade" [options]= "cidades" optionLabel="nome"
+                                placeholder="Selecione um estado"></p-dropdown>
+                            <span *ngIf= "cidade">Selecione uma cidade</span>
+                        </div>
+        
+                        <button pButton id="button" type="submit" class="p-button-success" label="Salvar"
+                                    [disabled]= "formulario.invalid || formulario.pristine"></button>
+                        <button pButton id="button" type="button" class="p-button-danger" label="Cancelar"
+                            (click)= "voltar()"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </p-panel>
+</div>

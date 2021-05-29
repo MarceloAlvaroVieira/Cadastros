@@ -4,14 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CidadeService } from '../cidade.service';
 import { Cidade } from '../cidade';
 import { PessoaService } from '../pessoa.service';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-pessoas',
   templateUrl: './update-pessoas.component.html',
   styleUrls: ['./update-pessoas.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class UpdatePessoasComponent implements OnInit {
 
@@ -79,28 +78,24 @@ export class UpdatePessoasComponent implements OnInit {
     return (this.formulario.get('cidade')?.dirty && this.formulario.get('cidade')?.invalid);
   }
 
-  irParaListaDePessoas() {
-    this.router.navigate(['/pessoas']);
-  }
-
   onSubmit(){
     this.messageService.add({key: 'confirmar', sticky: true, severity: 'info', summary: 'Salvar?', detail: 'Deseja salvar as alterações?' });
   }
 
   voltar(){
-    this.irParaListaDePessoas();
+    this.router.navigate(['/pessoas']);
   }
 
   onConfirm(){
     this.pessoaService.updatePessoa(this.id, this.formulario.value).subscribe(data => {
-      this.irParaListaDePessoas();
-
+      this.id = 0;
+      this.formulario.reset();
       this.messageService.clear();
-      this.messageService.add({key: 'exibir', sticky: true, severity: 'success', summary: 'Erro', detail: 'Dados atualizados com sucesso'});
+      this.messageService.add({key: 'exibir', sticky: true, severity: 'success', summary: 'Pronto!', detail: 'Dados atualizados com sucesso'});
     },
     error => {
       this.messageService.clear();
-      this.messageService.add({key: 'exibir', sticky: true, severity: 'error', summary: 'Erro', detail: 'Não foi possível atualizar os dados'});
+      this.messageService.add({key: 'exibir', sticky: true, severity: 'error', summary: 'Erro!', detail: 'Não foi possível atualizar os dados'});
     });
   }
 

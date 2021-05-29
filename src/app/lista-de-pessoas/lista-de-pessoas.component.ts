@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pessoa } from '../pessoa';
 import { PessoaService } from '../pessoa.service';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-lista-de-pessoas',
   templateUrl: './lista-de-pessoas.component.html',
   styleUrls: ['./lista-de-pessoas.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class ListaDePessoasComponent implements OnInit {
 

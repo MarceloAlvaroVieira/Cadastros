@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaDePessoasComponent } from './lista-de-pessoas/lista-de-pessoas.component';
 import { CadastroPessoasComponent } from './cadastro-pessoas/cadastro-pessoas.component';
 import { UpdatePessoasComponent } from './update-pessoas/update-pessoas.component';
-import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TableModule } from 'primeng/table' 
 import { PanelModule } from 'primeng/panel'
 import { ToolbarModule } from 'primeng/toolbar';
-import { ToastModule } from 'primeng/toast'
-import { MessagesModule } from 'primeng/messages';
-import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
 
 import { ButtonModule } from 'primeng/button';
 import { CadastroCidadeComponent } from './cadastro-cidade/cadastro-cidade.component';
@@ -45,7 +42,6 @@ import { InputTextModule } from 'primeng/inputtext';
     AppRoutingModule,
     HttpClientModule,
     ButtonModule,
-    AutoCompleteModule,
     DropdownModule,
     BrowserAnimationsModule,
     InputTextModule,
@@ -54,9 +50,6 @@ import { InputTextModule } from 'primeng/inputtext';
     TableModule,
     PanelModule,
     ToolbarModule,
-    FormsModule,
-    MessageModule,
-    MessagesModule,
     ToastModule
   ],
   providers: [],

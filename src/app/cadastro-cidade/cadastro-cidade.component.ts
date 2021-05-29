@@ -4,14 +4,13 @@ import { Router } from '@angular/router';
 import { CidadeService } from '../cidade.service';
 import { EstadoService } from '../estado.service';
 import { Estado } from '../estado';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastro-cidade',
   templateUrl: './cadastro-cidade.component.html',
   styleUrls: ['./cadastro-cidade.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class CadastroCidadeComponent implements OnInit {
 

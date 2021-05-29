@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CidadeService } from '../cidade.service';
 import { Cidade } from '../cidade';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-lista-de-cidade',
   templateUrl: './lista-de-cidade.component.html',
   styleUrls: ['./lista-de-cidade.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class ListaDeCidadeComponent implements OnInit {
 

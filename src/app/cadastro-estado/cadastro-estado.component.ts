@@ -3,14 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EstadoService } from '../estado.service';
 import { Estado } from '../estado';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastro-estado',
   templateUrl: './cadastro-estado.component.html',
   styleUrls: ['./cadastro-estado.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class CadastroEstadoComponent implements OnInit {
 
@@ -20,7 +19,7 @@ export class CadastroEstadoComponent implements OnInit {
 
   b: boolean = false;
 
-  constructor(private messageService: MessageService, private confirmationService: ConfirmationService, private formBuilder: FormBuilder, private estadoService: EstadoService, private router: Router) { }
+  constructor(private messageService: MessageService, private formBuilder: FormBuilder, private estadoService: EstadoService, private router: Router) { }
 
   ngOnInit(): void {
     this.valida_Form();

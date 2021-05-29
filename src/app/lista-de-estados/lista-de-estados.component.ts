@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EstadoService } from '../estado.service';
 import { Estado } from '../estado';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-lista-de-estados',
   templateUrl: './lista-de-estados.component.html',
   styleUrls: ['./lista-de-estados.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class ListaDeEstadosComponent implements OnInit {
 

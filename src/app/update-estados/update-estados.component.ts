@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EstadoService } from '../estado.service';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-estados',
   templateUrl: './update-estados.component.html',
   styleUrls: ['./update-estados.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class UpdateEstadosComponent implements OnInit {
 
@@ -55,22 +54,21 @@ export class UpdateEstadosComponent implements OnInit {
   onSubmit(){
     this.messageService.add({key: 'confirmar', sticky: true, severity: 'info', summary: 'Salvar?', detail: 'Deseja salvar as alterações?' });
   }
-
-  irParaListaDeEstados(){
-    this.router.navigate(['/estados']);
-  }
-
+  
   voltar(){
-    this.irParaListaDeEstados();
+    this.router.navigate(['/estados']);
   }
 
   onConfirm(){
     this.estadoService.updateEstado(this.id, this.formulario.value).subscribe(data => {
-      this.irParaListaDeEstados();
+      this.id = 0;
+      this.formulario.reset();
+      this.messageService.clear();
+      this.messageService.add({key: 'exibir', sticky: true, severity: 'success', summary: 'Pronto!', detail: 'Dados atualizados com sucesso'});
     },
     error => {
       this.messageService.clear();
-      this.messageService.add({key: 'exibir', sticky: true, severity: 'error', summary: 'Erro', detail: 'Não foi possível atualizar os dados'})
+      this.messageService.add({key: 'exibir', sticky: true, severity: 'error', summary: 'Erro', detail: 'Não foi possível atualizar os dados'});
     });
   }
 

@@ -4,14 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CidadeService } from '../cidade.service';
 import { EstadoService } from '../estado.service';
 import { Estado } from '../estado';
-import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-cidades',
   templateUrl: './update-cidades.component.html',
   styleUrls: ['./update-cidades.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class UpdateCidadesComponent implements OnInit {
 
@@ -73,21 +72,20 @@ export class UpdateCidadesComponent implements OnInit {
     });
   }
 
-  irParaListaDeCidades(){
-    this.router.navigate(['/cidades']);
-  }
-
   onSubmit(){
     this.messageService.add({key: 'confirmar', sticky: true, severity: 'info', summary: 'Salvar?', detail: 'Deseja salvar as alterações?' });
   }
 
   voltar(){
-    this.irParaListaDeCidades();
+    this.router.navigate(['/cidades']);
   }
 
   onConfirm(){
     this.cidadeService.update_Cidade(this.id, this.formulario.value).subscribe(data => {
-      this.irParaListaDeCidades();
+      this.id = 0;
+      this.formulario.reset();
+      this.messageService.clear();
+      this.messageService.add({key: 'exibir', sticky: true, severity: 'success', summary: 'Pronto!', detail: 'Dados atualizados com sucesso'});
     },
     error => {
       this.messageService.clear();

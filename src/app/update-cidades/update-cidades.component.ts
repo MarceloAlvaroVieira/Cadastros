@@ -47,6 +47,7 @@ export class UpdateCidadesComponent implements OnInit {
   get estado(){
     return (this.formulario.get('estado')?.dirty && this.formulario.get('estado')?.invalid);
   }
+  
   loadEstados(){
     this.estadoService.getLista_De_Estados().subscribe(data =>{
       this.estados = data;
@@ -61,7 +62,6 @@ export class UpdateCidadesComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     this.cidadeService.get_Cidade_By_Id(this.id).subscribe(data =>{
-      // this.cidade = data;
       this.formulario.get('nome')?.setValue(data.nome);
       this.formulario.get('cep')?.setValue(data.cep);
       this.formulario.get('estado')?.setValue(data.estado);

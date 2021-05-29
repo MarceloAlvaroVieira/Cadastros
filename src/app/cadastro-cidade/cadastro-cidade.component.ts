@@ -16,8 +16,6 @@ export class CadastroCidadeComponent implements OnInit {
 
   formulario!: FormGroup;
 
-  // cidade: Cidade = new Cidade();
-
   estados: Estado[] = [];
 
   constructor(private messageService: MessageService, private formBuilder: FormBuilder,private cidadeService: CidadeService, private router: Router, private estadoService: EstadoService) { }

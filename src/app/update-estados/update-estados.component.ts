@@ -23,6 +23,13 @@ export class UpdateEstadosComponent implements OnInit {
     this.valida_Form();
   }
 
+  valida_Form(){
+    this.formulario = this.formBuilder.group({
+      nome: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
+      sigla: [null, [Validators.required, Validators.minLength(2),Validators.maxLength(2)]]
+    })
+  }
+
   loadEstado(){
     this.id = this.activatedRoute.snapshot.params['id'];
 
@@ -34,13 +41,6 @@ export class UpdateEstadosComponent implements OnInit {
       this.messageService.clear();
       this.messageService.add({key: 'exibir', sticky: true, severity: 'error', summary: 'Erro', detail: 'Não foi possível carregar os dados'});
     });
-  }
-
-  valida_Form(){
-    this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      sigla: [null, [Validators.required, Validators.minLength(2),Validators.maxLength(2)]]
-    })
   }
 
   get nome(){

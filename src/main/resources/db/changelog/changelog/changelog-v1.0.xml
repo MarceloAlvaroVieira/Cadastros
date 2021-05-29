@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="marcelo" dbms="MySQL">
+
+		<preConditions>
+			<not>
+				<tableExists tableName="pessoa" />
+			</not>
+		</preConditions>
+
+		<createTable tableName="pessoa">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="nome" type="varchar(20)"></column>
+			<column name="sobrenome" type="varchar(20)"></column>
+			<column name="email" type="varchar(50)"></column>
+		</createTable>
+
+
+
+		<createTable tableName="cidade">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="nome" type="varchar(50)"></column>
+			<column name="cep" type="varchar(9)"></column>
+		</createTable>
+
+
+
+		<createTable tableName="estado">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="sigla" type="varchar(2)"></column>
+			<column name="nome" type="varchar(20)"></column>
+		</createTable>
+
+
+
+		<addColumn tableName="pessoa">
+			<column name="cidade" type="bigint">
+				<constraints foreignKeyName="cidade"
+					references="cidade(id)" nullable="false"></constraints>
+			</column>
+		</addColumn>
+
+
+		<addColumn tableName="cidade">
+			<column name="estado" type="bigint">
+				<constraints foreignKeyName="estado"
+					references="estado(id)" nullable="false" />
+			</column>
+		</addColumn>
+	</changeSet>
+</databaseChangeLog> 

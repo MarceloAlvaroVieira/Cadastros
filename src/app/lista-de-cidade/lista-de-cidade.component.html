@@ -48,7 +48,7 @@
                 <tr>
                     <td> {{ cidade.nome }} </td>
                     <td> {{ cidade.cep }} </td>
-                    <td> {{ cidade.estado.nome }} - {{cidade.estado.sigla}} </td>
+                    <td> {{ cidade.estado.nome }}</td>
                     <td>
                         <button pButton (click)= "updateCidade(cidade.id)" class="p-button-primary"
                         label="Editar" icon="pi pi-pencil" iconPos="left"></button>
